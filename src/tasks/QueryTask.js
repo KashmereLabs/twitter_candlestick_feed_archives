@@ -2,6 +2,7 @@ var schedule = require('node-schedule');
 var exchange = require('../models/exchange');
 var twitter = require('../models/twitter');
 var permaweb = require('../models/permaweb');
+
 var currentDataList = [];
 
 module.exports = {
