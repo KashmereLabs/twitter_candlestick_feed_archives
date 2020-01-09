@@ -1,0 +1,5 @@
+src/.env
+src/.env.local
+src/node_modules/
+src/wallet.json
+
