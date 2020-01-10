@@ -221,9 +221,9 @@ Wallet address for current live deployment is `h1pAFHXyRnrUsOI2m0g4g69IH-2cA4dPC
 
 ## Installation
 
-Create src/wallet.json and paste your wallet apk file there
+Create `src/wallet.json` and paste your wallet JWK file there
 
-Create src/.env file and add the following environment variables
+Create `src/.env` file and add the following environment variables
 
 TWITTER_CONSUMER_KEY= Your_Twitter_Consumer_Key
 
