@@ -2,6 +2,19 @@
 
 ## Collects timeseries data from Binance and combines it with Twitter chatter regarding the base token including tweet text, sentiment and id data points.
 
+## What can this datafeed be used for
+
+1. Data-Analytics on the time-sheet data
+
+
+2. Data visualization on the time-series data
+
+
+3. Generating trade signals 
+
+
+4. Permanent archives of historical price data mapped with crypto twitter texts
+
 
 
 ## Sample Queries
@@ -132,7 +145,29 @@ arweave.arql({
 ```
 
 
+## Cron job 
+
 Cron jobs will by default run on your system timezone
 
 To switch to UTC, simply execute sudo dpkg-reconfigure tzdata, scroll to the bottom of the Continents list and select Etc or None of the above; in the second list, select UTC.
 
+## Installation
+
+Create src/wallet.json and paste your wallet apk file there
+
+Create src/.env file and add the following environment variables
+
+TWITTER_CONSUMER_KEY= Your_Twitter_Consumer_Key
+TWITTER_CONSUMER_SECRET=Your_Twitter_Consumer_Secret
+TWITTER_ACCESS_TOKEN_KEY=Your_Twitter_Access_Token_Key
+TWITTER_ACCESS_TOKEN_SECRET=Your_Twitter_Access_Token_Secret
+
+BINANCE_ACCESS_TOKEN_KEY=Your_Binance_Access_Token_Key
+BINANCE_ACCESS_TOKEN_SECRET=Your_Binance_Access_Token_Secret
+
+Browse to src/
+run 
+```
+sudo npm install
+npm start
+```

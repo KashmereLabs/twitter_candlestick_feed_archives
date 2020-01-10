@@ -60,6 +60,8 @@ module.exports = {
         }
       }).then(function(walletTxnResponse) {
         return walletTxnResponse;
+      }).catch(function(err) {
+        console.log(err);
       });
     });
   },
@@ -101,7 +103,7 @@ module.exports = {
     });
   },
 
-  queryDataForSymbolsWithTweets(symbol) {
+  queryDataForSymbolsWithTweets() {
     const arweave = getArweave();
     return arweave.wallets.jwkToAddress(walletJWK).then((address) => {
       return arweave.arql({
@@ -112,17 +114,9 @@ module.exports = {
           expr2: address
         },
         expr2: {
-          op: "and",
-          expr1: {
-            op: "equals",
-            expr1: "symbol",
-            expr2: symbol
-          },
-          expr2: {
-            op: "equals",
-            expr1: "has_tweets",
-            expr2: true
-          }
+          op: "equals",
+          expr1: "has_tweets",
+          expr2: "true"
         }
       }).then(function(walletTxnResponse) {
         return walletTxnResponse;

@@ -12,16 +12,19 @@ module.exports = {
     }, walletJWK);
     var currentDate = moment(data.end_time).format("MM-DD-YYYY");
     var currentHour = moment(data.end_time).format("HH");
-    let hasTweets = false;
+    let hasTweets = "false";
     let avg_sentiment = null;
     if (data.tweets.tweet_data && data.tweets.tweet_data.length > 0) {
-      hasTweets = true;
+      hasTweets = "true";
       avg_sentiment = 0;
       data.tweets.tweet_data.forEach(function(tweetItem) {
         avg_sentiment += tweetItem.sentiment.score;
       });
       avg_sentiment = avg_sentiment.toFixed(2);
     }
+    
+    console.log(currentHour);
+    console.log(currentDate);
 
     dataTransaction.then(function(txResponse) {
       txResponse.addTag('Content-Type', 'text/json');
