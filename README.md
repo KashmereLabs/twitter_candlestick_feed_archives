@@ -5,17 +5,21 @@
 ## What can this datafeed be used for
 
 1. Data-Analytics on the time-sheet data
+
 This feed can be used to run analytics and time-series AI on token candlesticks data mapped to twitter chatter
 relating to the token during the period of the candlestick. 
 
 
 2. Data visualization on the time-series data
+
 Create charts and graphs for technical analysis on the 
 
 3. Generating trade signals 
+
 Tradesignals can be generated using either twitter chatter volume, text, sentiment or candlestick data.
 
 4. Permanent archives of historical price data mapped with crypto twitter texts
+
 Although some free and propreitaty APIs exist, they are not easily auditable and do not combine candlestick data with twitter data on a real-time basis.
 
 
