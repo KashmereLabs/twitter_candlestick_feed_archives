@@ -21,6 +21,20 @@ Trade signals can be generated using either twitter chatter volume, text, sentim
 Although some free and propreitaty APIs exist, they are not easily auditable and do not combine candlestick data with twitter data on a real-time basis. Furthermore they usually don't provide archives
 beyond a certain time in the past. This feed can be used to query data starting from 01-10-2020 to potentially any time in the future. 
 
+## Feed Tags
+
+The following tags can be used to construct ARQL queries on the feed data
+
+*symbol* - Symbol of the coin eg. BTC
+
+*date* - Date to be queries eg. 01-10-2020
+
+*hour* -  The hour for which to retrieve the data eg. 1 will return data for 00 - 01 hours.
+Combining with date tag will return the hourly data on a particular date else will return the data for that hour for everyday since beginning of feed.
+_Hours are calculated based on server time. For modifying server time see below_
+
+*sentiment_type* - positive / negative. Eg. querying by sentiment_type positive will return all time-series data points during which the average twitter sentiment was positive.
+
 ## Sample Queries
 
 ### Query all time-series for BTC
@@ -218,6 +232,19 @@ To switch to UTC, simply execute sudo dpkg-reconfigure tzdata, scroll to the bot
 ## Deployment wallet address
 
 Wallet address for current live deployment is `h1pAFHXyRnrUsOI2m0g4g69IH-2cA4dPCsy45O3vq6o`
+
+## Testing against live server
+
+You can test the app against a live API server which constructs sample ARQL query and parses and decodes the returned JSON data.
+
+`http://52.37.135.143:8555/query/time_series?symbol=BTC`
+Returns all time-series data combined with twitter data since beginning of feed for BTC.
+
+`http://52.37.135.143:8555/query/time_series_with_tweets`
+Returns all time-series data combined with tweet data for symbols for hours in which there was at-least 1 tweet about the symbol.
+
+`http://52.37.135.143:8555/query/time_series_for_symbol_on_date?symbol=BTC&date=01-10-2020`
+Returns all candlestick data combined with twitter data demarcated hourly for BTC on date 01-10-2020
 
 ## Installation
 
