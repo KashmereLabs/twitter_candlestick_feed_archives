@@ -1,25 +1,25 @@
 # Twitter Candlestick feed archives
 
-### Collects timeseries data from Binance and combines it with Twitter chatter regarding the base token including tweet text, sentiment and id data points.
+**Collects timeseries data from Binance and combines it with Twitter chatter for the base token including tweet text and sentiment data points.**
 
 ## What can this datafeed be used for
 
 1. Data-Analytics on the time-sheet data
 
-This feed can be used to run analytics and time-series AI on token candlesticks data mapped to twitter chatter
-relating to the token during the period of the candlestick. 
+   This feed can be used to run analytics and time-series AI on token candlesticks data mapped to twitter chatter during the period of the candlestick and used to create predictions on the dataset. 
 
 2. Data visualization on the time-series data
 
-Create charts and graphs for technical analysis on the 
+   It can also be used to create charts and graphs for technical analysis and visualization combining candestick data with tweet data during the same time period.
 
 3. Generating trade signals 
 
-Tradesignals can be generated using either twitter chatter volume, text, sentiment or candlestick data.
+   Trade signals can be generated using either twitter chatter volume, text, sentiment or candlestick data.
 
 4. Permanent archives of historical price data mapped with crypto twitter texts
 
-Although some free and propreitaty APIs exist, they are not easily auditable and do not combine candlestick data with twitter data on a real-time basis.
+   Although some free and propreitaty APIs exist, they are not easily auditable and do not combine candlestick data with twitter data on a real-time basis. Furthermore they usually don't provide archives
+   beyond a certain time in the past. This feed can be used to query data starting from 01-10-2020 to potentially any time in the future. 
 
 ## Sample Queries
 
@@ -159,6 +159,9 @@ arweave.arql({
 ```
 **Sample Response**
 
+
+* To view more information regarding how a ARQL query can be constructed check out src/models/TransactionQuery.js.
+  For information regarding how the raw json can be retrieved and parsed from the ARQL response check out src/routes/query.js *
 
 ## Cron job 
 The system aggregates the data at the start of every hour, during which it queries the candlestick data for the past hour and the twitter data for the past hour.
