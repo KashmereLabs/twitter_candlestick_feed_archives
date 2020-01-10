@@ -1,7 +1,7 @@
 var schedule = require('node-schedule');
-var exchange = require('../models/exchange');
-var twitter = require('../models/twitter');
-var permaweb = require('../models/permaweb');
+var exchange = require('../models/Exchange');
+var twitter = require('../models/Twitter');
+var permaweb = require('../models/PermaWeb');
 
 var currentDataList = [];
 
