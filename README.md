@@ -40,25 +40,6 @@ arweave.arql({
         }
       })
 ```
-**Sample Response**
-```
-[{"ticker":[[1578661260000,7887.67,7891.59,7880.25,7880.26,82.399311],
-           [1578661320000,7880.26,7894.47,7879.35,7891.83,36.428714],
-           [1578661380000,7891.84,7897.89,7891.79,7895.14,80.449343],
-          ...
-          ],
- "tweets":{"symbol":"BTC",
-          "tweet_data":
-          [{"text":"Top 10 Mentions on Twitter in the last hour - $BTC $ETH $XRP $LTC $BSV $EOS $BCH $LINK $USDT $VET \n\nMore on… https://t.co/NjtxdphUcC","id":1215634430049554400,"sentiment":{"score":2,"comparative":0.07692307692307693},"created_at":"2020-01-10T14:00:08.000Z"},
-           {"text":"$BTC : +0.55%📈 7907$\nTop (last h):\n$CCA : +8.87%📈 58564st\n$ZB : +2.12%📈 2655st\n$LEO : +1.72%📈 11138st\n$BTM : +1.65%… https://t.co/NlS3rhYo6d","id":1215634421224743000,"sentiment":{"score":10,"comparative":0.3225806451612903},"created_at":"2020-01-10T14:00:06.000Z"},
-           {"text":"Whales are buying $XMR\nLast Price: 0.00737100 (Binance)\nAlerts in last 7 days: 2\n\n#BTC #Binance #XMR https://t.co/j2kD0kjIbF","id":1215634411959595000,"sentiment":{"score":0,"comparative":0},"created_at":"2020-01-10T14:00:03.000Z"},
-           ...
-          ],
-          "max_id":1215634430049554400},
-          "start_time":1578661200008,
-          "end_time":1578664800008}
-```
-
 
 ### Query all time-series data for BTC on 01-09-2020
 ```
@@ -84,8 +65,6 @@ arweave.arql({
         }
       })
 ```
-**Sample Response**
-
 
 ### Query the time-series data for BTC on 05-01-2020 between 00:00 and 01:00 hours
 ```
@@ -119,8 +98,6 @@ arweave.arql({
         }
       })
 ```
-**Sample Response**
-
 
 ### Query the time-series data for all tokens 05-01-2020 between 00:00 and 01:00 hours
 ```
@@ -146,7 +123,6 @@ arweave.arql({
         }
       })
 ```
-**Sample Response**
 
 
 ### Query all time-series for all tokens which people are talking about on Twitter on 05-01-2020
@@ -173,8 +149,59 @@ arweave.arql({
         }
       })
 ```
-**Sample Response**
 
+
+**Sample Response**
+```
+[{
+ "ticker":[[1578661260000,7887.67,7891.59,7880.25,7880.26,82.399311],
+           [1578661320000,7880.26,7894.47,7879.35,7891.83,36.428714],
+           [1578661380000,7891.84,7897.89,7891.79,7895.14,80.449343],
+          ...
+          ],
+ "tweets":{"symbol":"BTC",
+          "tweet_data":
+           [
+            {"text":"Top 10 Mentions on Twitter in the last hour - $BTC $ETH $XRP $LTC $BSV $EOS $BCH $LINK $USDT $VET \n\nMore on… https://t.co/NjtxdphUcC",
+            "id":1215634430049554400,
+            "sentiment":{"score":2,"comparative":0.07692307692307693},
+            "created_at":"2020-01-10T14:00:08.000Z"},
+            {"text":"$BTC : +0.55%📈 7907$\nTop (last h):\n$CCA : +8.87%📈 58564st\n$ZB : +2.12%📈 2655st\n$LEO : +1.72%📈 11138st\n$BTM : +1.65%… https://t.co/NlS3rhYo6d",
+            "id":1215634421224743000,
+            "sentiment":{"score":10,"comparative":0.3225806451612903},
+            "created_at":"2020-01-10T14:00:06.000Z"},
+            {"text":"Whales are buying $XMR\nLast Price: 0.00737100 (Binance)\nAlerts in last 7 days: 2\n\n#BTC #Binance #XMR https://t.co/j2kD0kjIbF",
+            "id":1215634411959595000,
+            "sentiment":{"score":0,"comparative":0},
+            "created_at":"2020-01-10T14:00:03.000Z"},
+            ...
+           ],
+          "max_id":1215634430049554400
+          },
+          "start_time":1578661200008,
+          "end_time":1578664800008}
+  },
+  {
+ "ticker":[[1578585120000,7898.47,7899.56,7896.29,7898.08,28.023078],
+           [1578585180000,7897.3,7901.95,7896.91,7900.19,19.886241],
+           [1578585240000,7899.98,7902,7899.97,7901.43,6.310585],
+           [1578585300000,7901.39,7901.73,7900.54,7900.81,3.19399]
+          ...
+          ],
+ "tweets":{"symbol":"BTC",
+           "tweet_data":[{"text":"🔥 The centralization of $BTC continues to increase as exchanges gain more control  https://t.co/nDFEyRa5YU",
+           "id":1215300962371416000,
+           "sentiment":{"score":3,"comparative":0.17647058823529413}},
+            ...
+            ],
+           "max_id":1215295965890064400
+          },
+          "start_time":1578580200281,
+          "end_time":1578583800281
+  },
+  ...        
+]          
+```
 
 _To view more information regarding how a ARQL query can be constructed check out src/models/TransactionQuery.js._
 _For information regarding how the raw json can be retrieved and parsed from the ARQL response check out src/routes/query.js_
