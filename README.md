@@ -9,7 +9,6 @@
 This feed can be used to run analytics and time-series AI on token candlesticks data mapped to twitter chatter
 relating to the token during the period of the candlestick. 
 
-
 2. Data visualization on the time-series data
 
 Create charts and graphs for technical analysis on the 
@@ -22,18 +21,17 @@ Tradesignals can be generated using either twitter chatter volume, text, sentime
 
 Although some free and propreitaty APIs exist, they are not easily auditable and do not combine candlestick data with twitter data on a real-time basis.
 
-
-
 ## Sample Queries
 
 ### Query all time-series for BTC
+
 ```
 arweave.arql({
         op: "and",
         expr1: {
           op: "equals",
           expr1: "from",
-          expr2: address
+          expr2: "h1pAFHXyRnrUsOI2m0g4g69IH-2cA4dPCsy45O3vq6o"
         },
         expr2: {
           op: "equals",
@@ -42,6 +40,9 @@ arweave.arql({
         }
       })
 ```
+**Sample Response**
+
+
 
 ### Query all time-series data for BTC on 01-09-2020
 ```
@@ -50,7 +51,7 @@ arweave.arql({
         expr1: {
           op: "equals",
           expr1: "from",
-          expr2: address
+          expr2: "h1pAFHXyRnrUsOI2m0g4g69IH-2cA4dPCsy45O3vq6o"
         },
         expr2: {
           op: "and",
@@ -67,6 +68,8 @@ arweave.arql({
         }
       })
 ```
+**Sample Response**
+
 
 ### Query the time-series data for BTC on 05-01-2020 between 00:00 and 01:00 hours
 ```
@@ -75,7 +78,7 @@ arweave.arql({
         expr1: {
           op: "equals",
           expr1: "from",
-          expr2: address
+          expr2: "h1pAFHXyRnrUsOI2m0g4g69IH-2cA4dPCsy45O3vq6o"
         },
         expr2: {
           op: "and",
@@ -100,6 +103,8 @@ arweave.arql({
         }
       })
 ```
+**Sample Response**
+
 
 ### Query the time-series data for all tokens 05-01-2020 between 00:00 and 01:00 hours
 ```
@@ -108,7 +113,7 @@ arweave.arql({
         expr1: {
           op: "equals",
           expr1: "from",
-          expr2: address
+          expr2: "h1pAFHXyRnrUsOI2m0g4g69IH-2cA4dPCsy45O3vq6o"
         },
         expr2: {
           op: "and",
@@ -125,6 +130,8 @@ arweave.arql({
         }
       })
 ```
+**Sample Response**
+
 
 ### Query all time-series for all tokens which people are talking about on Twitter on 05-01-2020
 ```
@@ -133,7 +140,7 @@ arweave.arql({
         expr1: {
           op: "equals",
           expr1: "from",
-          expr2: address
+          expr2: "h1pAFHXyRnrUsOI2m0g4g69IH-2cA4dPCsy45O3vq6o"
         },
         expr2: {
           op: "and",
@@ -150,13 +157,21 @@ arweave.arql({
         }
       })
 ```
+**Sample Response**
 
 
 ## Cron job 
+The system aggregates the data at the start of every hour, during which it queries the candlestick data for the past hour and the twitter data for the past hour.
+
+It further cleans and normalizes the data and archives it into Arweave permaweb.
 
 Cron jobs will by default run on your system timezone
 
 To switch to UTC, simply execute sudo dpkg-reconfigure tzdata, scroll to the bottom of the Continents list and select Etc or None of the above; in the second list, select UTC.
+
+# Deployment wallet address
+
+Wallet address for current live deployment is `h1pAFHXyRnrUsOI2m0g4g69IH-2cA4dPCsy45O3vq6o`
 
 ## Installation
 
@@ -176,7 +191,7 @@ BINANCE_ACCESS_TOKEN_KEY=Your_Binance_Access_Token_Key
 
 BINANCE_ACCESS_TOKEN_SECRET=Your_Binance_Access_Token_Secret
 
-Run the following commands
+**Run the following commands**
 
 ```
 cd src/
