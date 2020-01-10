@@ -8,27 +8,19 @@ module.exports = {
     return new Promise((resolve, reject) => {
       let tweetQuery = "%23" + symbol + "%20OR%20" + "%24" + symbol + "%23" + symbol.toLowerCase() + "%20OR%20" + "%24" + symbol.toLowerCase();
 
-
-
       let queryParams = { q: tweetQuery, lang: 'en', result_type: 'recent' };
       if (maxId !== -1) {
         queryParams.since_id = maxId;
       }
       client.get('search/tweets', queryParams, function(error, tweets, response) {
         if (tweets) {
-          console.log("***");
-          console.log(tweets);
           let max_id = -1;
           if (tweets.search_metadata && tweets.search_metadata.max_id) {
             max_id = tweets.search_metadata.max_id;
           }
-
           const statusList = tweets.statuses;
           let tweetDataList = [];
           if (statusList) {
-            console.log(symbol);
-            console.log(statusList);
-
             tweetDataList = extractTweetData(statusList, anHourAgoTimeStamp);
           }
           resolve({ "symbol": symbol, "tweet_data": tweetDataList, "max_id": max_id });
