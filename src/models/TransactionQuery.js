@@ -17,6 +17,7 @@ module.exports = {
   queryDataBySymbol(symbol) {
     const arweave = getArweave();
     return arweave.wallets.jwkToAddress(walletJWK).then((address) => {
+      console.log(address);
       return arweave.arql({
         op: "and",
         expr1: {
