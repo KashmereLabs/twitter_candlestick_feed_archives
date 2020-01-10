@@ -1,6 +1,6 @@
 # Twitter Candlestick feed archives
 
-**Collects timeseries data from Binance and combines it with Twitter chatter for the base token including tweet text and sentiment data points.**
+**Collects timeseries data from Binance, combines it with Twitter chatter for the base token including tweet text and sentiment data points and archives it to Arweave permaweb.**
 
 ## What can this datafeed be used for
 
@@ -41,7 +41,23 @@ arweave.arql({
       })
 ```
 **Sample Response**
-
+```
+[{"ticker":[[1578661260000,7887.67,7891.59,7880.25,7880.26,82.399311],
+           [1578661320000,7880.26,7894.47,7879.35,7891.83,36.428714],
+           [1578661380000,7891.84,7897.89,7891.79,7895.14,80.449343],
+          ...
+          ],
+ "tweets":{"symbol":"BTC",
+          "tweet_data":
+          [{"text":"Top 10 Mentions on Twitter in the last hour - $BTC $ETH $XRP $LTC $BSV $EOS $BCH $LINK $USDT $VET \n\nMore on… https://t.co/NjtxdphUcC","id":1215634430049554400,"sentiment":{"score":2,"comparative":0.07692307692307693},"created_at":"2020-01-10T14:00:08.000Z"},
+           {"text":"$BTC : +0.55%📈 7907$\nTop (last h):\n$CCA : +8.87%📈 58564st\n$ZB : +2.12%📈 2655st\n$LEO : +1.72%📈 11138st\n$BTM : +1.65%… https://t.co/NlS3rhYo6d","id":1215634421224743000,"sentiment":{"score":10,"comparative":0.3225806451612903},"created_at":"2020-01-10T14:00:06.000Z"},
+           {"text":"Whales are buying $XMR\nLast Price: 0.00737100 (Binance)\nAlerts in last 7 days: 2\n\n#BTC #Binance #XMR https://t.co/j2kD0kjIbF","id":1215634411959595000,"sentiment":{"score":0,"comparative":0},"created_at":"2020-01-10T14:00:03.000Z"},
+           ...
+          ],
+          "max_id":1215634430049554400},
+          "start_time":1578661200008,
+          "end_time":1578664800008}
+```
 
 
 ### Query all time-series data for BTC on 01-09-2020
