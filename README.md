@@ -231,7 +231,7 @@ To switch to UTC, simply execute sudo dpkg-reconfigure tzdata, scroll to the bot
 
 ## Deployment wallet address
 
-Wallet address for current live deployment is `h1pAFHXyRnrUsOI2m0g4g69IH-2cA4dPCsy45O3vq6o`
+Wallet address for current live deployment is `ASi1bOtYHqlrZDGB74BnBYasxSwMi8qpgjIww3MV6uQ`
 
 ## Testing against live server
 
