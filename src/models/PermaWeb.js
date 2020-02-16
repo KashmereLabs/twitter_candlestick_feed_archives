@@ -14,18 +14,23 @@ module.exports = {
     var currentHour = moment(data.end_time).format("HH");
     let hasTweets = "false";
     let avg_sentiment = null;
+    let sentimentType = "";
     if (data.tweets.tweet_data && data.tweets.tweet_data.length > 0) {
       hasTweets = "true";
       avg_sentiment = 0;
       data.tweets.tweet_data.forEach(function(tweetItem) {
         avg_sentiment += tweetItem.sentiment.score;
       });
+      if (avg_sentiment > 0) {
+        sentimentType = "positive";
+      } else {
+        sentimentType = "negative";
+      }
       avg_sentiment = avg_sentiment.toFixed(2);
     }
+    console.log("hour "+currentHour);
+    console.log("date "+currentDate);
     
-    console.log(currentHour);
-    console.log(currentDate);
-
     dataTransaction.then(function(txResponse) {
       txResponse.addTag('Content-Type', 'text/json');
       txResponse.addTag('symbol', data.tweets.symbol);
@@ -35,8 +40,10 @@ module.exports = {
       txResponse.addTag("date", currentDate);
       txResponse.addTag("avg_sentiment", avg_sentiment);
       txResponse.addTag("has_tweets", hasTweets);
+      txResponse.addTag("sentiment_type", sentimentType);
       return arweave.transactions.sign(txResponse, walletJWK).then(function(signedTransactionResponse) {
         return arweave.transactions.post(txResponse).then(function(postResponse) {
+            console.log(postResponse);
           console.log(`Added transaction for ${data.tweets.symbol}`);
         });
       });

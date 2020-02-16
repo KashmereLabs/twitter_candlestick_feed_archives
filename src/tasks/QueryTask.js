@@ -1,15 +1,26 @@
 var schedule = require('node-schedule');
-var exchange = require('../models/exchange');
-var twitter = require('../models/twitter');
-var permaweb = require('../models/permaweb');
+var exchange = require('../models/Exchange');
+var twitter = require('../models/Twitter');
+var permaweb = require('../models/PermaWeb');
 
 var currentDataList = [];
 
 module.exports = {
-  startApiQuery: function() {
+  startApiQueryTask: function() {
 
     var j = schedule.scheduleJob('0 * * * *', function() {
-      let currentTimeStamp = new Date().getTime();
+      getTransactionData();
+    });
+  },
+  
+  queryApi: function() {
+    getTransactionData();
+  }
+}
+
+
+function getTransactionData() {
+        let currentTimeStamp = new Date().getTime();
 
       exchange.getExchangeBaseSymbols().then(function(exchangeResponse) {
         var newDataList = [];
@@ -54,6 +65,4 @@ module.exports = {
         }
         getTweetTrends();
       });
-    });
-  }
 }

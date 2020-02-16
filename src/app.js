@@ -3,13 +3,15 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
+var cors = require('cors');
 var indexRouter = require('./routes/index');
 var queryRouter = require('./routes/query');
 
 var Task = require('./tasks/QueryTask');
 
 var app = express();
+app.use(cors());
+
 require('dotenv').config()
 
 // view engine setup
@@ -25,7 +27,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/query', queryRouter);
 
-Task.startApiQuery();
+//Task.queryApi();
+Task.startApiQueryTask();
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

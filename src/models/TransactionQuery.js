@@ -4,10 +4,26 @@ const walletJWK = require('../wallet.json');
 module.exports = {
   getDecodedTransactionData: function(dataList) {
     const arweave = getArweave();
+
     let dataPromiseList = dataList.map(function(dataItem) {
+        
+        
+        arweave.transactions.get(dataItem).then(transaction => {
+        transaction.get('tags').forEach(tag => {
+          
+    let key = tag.get('name', {decode: true, string: true});
+    let value = tag.get('value', {decode: true, string: true});
+    if (key === 'hour') {
+    console.log(`${key} : ${value}`);
+    }
+  });
+        });
+        
       return arweave.transactions.getData(dataItem, { decode: true, string: true });
     });
     return Promise.all(dataPromiseList).then(function(promiseDataResponse) {
+
+      
       return promiseDataResponse.map(function(dataString) {
         return JSON.parse(dataString);
       });
@@ -17,7 +33,6 @@ module.exports = {
   queryDataBySymbol(symbol) {
     const arweave = getArweave();
     return arweave.wallets.jwkToAddress(walletJWK).then((address) => {
-      console.log(address);
       return arweave.arql({
         op: "and",
         expr1: {
@@ -68,6 +83,7 @@ module.exports = {
   },
 
   queryDataBySymbolOnDateAndHour(symbol, date, hour) {
+
     const arweave = getArweave();
     return arweave.wallets.jwkToAddress(walletJWK).then((address) => {
       return arweave.arql({
@@ -94,7 +110,7 @@ module.exports = {
             expr2: {
               op: "equals",
               expr1: "hour",
-              expr2: hour
+              expr2: hour.toString()
             }
           }
         }
