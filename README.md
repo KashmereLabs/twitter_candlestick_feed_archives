@@ -3,7 +3,7 @@
 **Collects timeseries data from Binance every hour, combines it with Twitter chatter for the base token over the hour including tweet text and sentiment data points and archives it to Arweave permaweb.**
 
 
-** This project is the winning submission for Arweave Build a Permafeed hackathon **
+**This project is the winning submission for Arweave Build a Permafeed hackathon**
 
 ## What can this datafeed be used for
 
